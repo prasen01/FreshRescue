@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBite | Fight Food Waste</title>
+    <style>
+        :root {
+            --earth: #5E8C61;
+            --leaf: #A3B18A;
+            --sand: #DDB771;
+            --sun: #F4A261;
+            --clay: #D57A66;
+            --stone: #3A5A40;
+            --cloud: #F8F9FA;
+            --charcoal: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--cloud);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--earth), var(--stone));
+            color: white;
+            padding: 1.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.8rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav ul li a:hover {
+            border-bottom-color: var(--sand);
+        }
+        
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: radial-gradient(var(--sand) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .hero h1 {
+            color: var(--stone);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            color: var(--charcoal);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-bar {
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .search-btn {
+            background: linear-gradient(to right, var(--sun), var(--clay));
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .search-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .quick-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-chip {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-chip:hover, .filter-chip.active {
+            background: var(--leaf);
+            color: white;
+            border-color: var(--leaf);
+        }
+        
+        .food-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--stone);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--sand);
+        }
+        
+        .view-all {
+            color: var(--earth);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .view-all i {
+            margin-left: 0.5rem;
+        }
+        
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .food-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--clay);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
+        }
+        
+        .food-img {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .food-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .food-card:hover .food-img img {
+            transform: scale(1.05);
+        }
+        
+        .food-details {
+            padding: 1.5rem;
+        }
+        
+        .food-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+        
+        .food-source {
+            color: var(--earth);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .food-source i {
+            margin-right: 0.3rem;
+        }
+        
+        .food-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .current-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--stone);
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--charcoal);
+            opacity: 0.6;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .food-save {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .food-distance {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.7;
+        }
+        
+        .save-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .save-btn:hover, .save-btn.saved {
+            color: var(--clay);
+        }
+        
+        .history-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .history-item:last-child {
+            border-bottom: none;
+        }
+        
+        .history-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .history-info p {
+            color: var(--charcoal);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .reorder-btn {
+            background: linear-gradient(to right, var(--leaf), var(--earth));
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .reorder-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--sand);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--sand);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1.5rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .food-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+                border-radius: 12px;
+            }
+            
+            .search-input {
+                border-radius: 12px 12px 0 0;
+            }
+            
+            .search-btn {
+                padding: 1rem;
+                border-radius: 0 0 12px 12px;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .view-all {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-pattern"></div>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">♻</span>
+                <span>EcoBite</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">My Saves</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">Impact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="hero">
+            <h1>Rescue Delicious Surplus Food</h1>
+            <p>Discover fresh meals from local businesses that would otherwise go to waste. Save money while saving the planet.</p>
+            
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search for meals, cuisines, or locations...">
+                    <button class="search-btn">Find Food</button>
+                </div>
+                <div class="quick-filters">
+                    <div class="filter-chip active">All</div>
+                    <div class="filter-chip">Vegetarian</div>
+                    <div class="filter-chip">Vegan</div>
+                    <div class="filter-chip">Bakery</div>
+                    <div class="filter-chip">Ready Meals</div>
+                    <div class="filter-chip">Under $5</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="food-section">
+            <div class="section-header">
+                <h2 class="section-title">Today's Fresh Picks</h2>
+                <a href="#" class="view-all">View all <i class="fas fa-chevron-right"></i></a>
+            </div>
+            
+            <div class="food-grid">
+                <!-- Food Item 1 -->
+                <div class="food-card">
+                    <div class="food-badge">60% OFF</div>
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Healthy Bowl">
+                    </div>
+                    <div class="food-details">
+                        <h3 class="food-title">Special Veggie Bowl</h3>
+                        <p class="food-source"><i class="fas fa-store"></i> Natural Health Cafe</p>
+                        <div class="food-price">
+                            <span class="current-price">$4.20</span>
+                            <span class="original-price">$10.50</span>
+                        </div>
+                        <div class="food-save">
+                            <span class="food-distance">0.4 mi away</span>
+                            <button class="save-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Food Item 2 -->
+                <div class="food-card">
+                    <div class="food-badge">55% OFF</div>
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Pizza">
+                    </div>
+                    <div class="food-details">
+                        <h3 class="food-title">Margherita Pizza</h3>
+                        <p class="food-source"><i class="fas fa-store"></i> Pizza House</p>
+                        <div class="food-price">
+                            <span class="current-price">$6.75</span>
+                            <span class="original-price">$15.00</span>
+                        </div>
+                        <div class="food-save">
+                            <span class="food-distance">0.7 mi away</span>
+                            <button class="save-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Food Item 3 -->
+                <div class="food-card">
+                    <div class="food-badge">70% OFF</div>
+                    <div class="food-img">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff" alt="Bread Basket">
+                    </div>
+                    <div class="food-details">
+                        <h3 class="food-title">French Bread Box</h3>
+                        <p class="food-source"><i class="fas fa-store"></i> Flurry's Bakery</p>
+                        <div class="food-price">
+                            <span class="current-price">$5.25</span>
+                            <span class="original-price">$17.50</span>
+                        </div>
+                        <div class="food-save">
+                            <span class="food-distance">1.1 mi away</span>
+                            <button class="save-btn saved"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="food-section">
+            <div class="section-header">
+                <h2 class="section-title">Your Food History</h2>
+                <a href="#" class="view-all">View all <i class="fas fa-chevron-right"></i></a>
+            </div>
+            
+            <div class="history-section">
+                <!-- History Item 1 -->
+                <div class="history-item">
+                    <div class="history-info">
+                        <h3>Vegetarian Meals Near Work</h3>
+                        <p>Last ordered: 2 days ago • 5 items saved</p>
+                    </div>
+                    <button class="reorder-btn">Browse Again</button>
+                </div>
+                
+                <!-- History Item 2 -->
+                <div class="history-item">
+                    <div class="history-info">
+                        <h3>Afternoon Meal Deals</h3>
+                        <p>Last ordered: 1 week ago • 3 items saved</p>
+                    </div>
+                    <button class="reorder-btn">Browse Again</button>
+                </div>
+                
+                <!-- History Item 3 -->
+                <div class="history-item">
+                    <div class="history-info">
+                        <h3>Weekend Dinner Options</h3>
+                        <p>Last ordered: 3 weeks ago • 7 items saved</p>
+                    </div>
+                    <button class="reorder-btn">Browse Again</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>EcoBite</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Our Impact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Businesses</h3>
+                <ul>
+                    <li><a href="#">Partner With Us</a></li>
+                    <li><a href="#">Business Dashboard</a></li>
+                    <li><a href="#">Food Safety</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 USP Technologies. All rights reserved. Together we've saved 1K+ meals from going to waste!
+        </div>
+    </footer>
+    <!-- Link donations.js -->
+<script src="js/donations.js"></script>
+</body>
+</html>

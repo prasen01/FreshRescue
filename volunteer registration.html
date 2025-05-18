@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer with Us - Food Reduction Initiative</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #388E3C;
+            --accent-color: #8BC34A;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #757575;
+            --white: #ffffff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            margin: 10px 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .form-group {
+            flex: 1 0 100%;
+            padding: 0 15px;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .form-group.half {
+                flex: 0 0 50%;
+            }
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        .required:after {
+            content: " *";
+            color: #e53935;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-item label {
+            display: inline;
+            font-weight: normal;
+            margin-left: 5px;
+        }
+        
+        .availability-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .availability-table th,
+        .availability-table td {
+            border: 1px solid var(--medium-gray);
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .availability-table th {
+            background-color: var(--light-gray);
+            font-weight: 500;
+        }
+        
+        .availability-table select {
+            width: 100%;
+            padding: 5px;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--dark-gray);
+        }
+        
+        .login-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .volunteer-benefits {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .volunteer-benefits h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .volunteer-benefits ul {
+            padding-left: 20px;
+        }
+        
+        .volunteer-benefits li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Volunteer Registration</h1>
+            <p>Join our mission to reduce food waste and feed our community</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="volunteerForm">
+                <div class="form-section">
+                    <h2 class="section-title">Personal Information</h2>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="firstName" class="required">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="lastName" class="required">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="email" class="required">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="phone" class="required">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" name="dob">
+                        </div>
+                        <div class="form-group half">
+                            <label for="emergencyContact">Emergency Contact</label>
+                            <input type="text" id="emergencyContact" name="emergencyContact">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" name="address">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+                        <div class="form-group half">
+                            <label for="zipCode">ZIP/Postal Code</label>
+                            <input type="text" id="zipCode" name="zipCode">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Volunteer Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Areas of Interest <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="foodCollection" name="interest" value="foodCollection">
+                                <label for="foodCollection">Food Collection (from donors)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="foodSorting" name="interest" value="foodSorting">
+                                <label for="foodSorting">Food Sorting and Packaging</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="distribution" name="interest" value="distribution">
+                                <label for="distribution">Food Distribution</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="driving" name="interest" value="driving">
+                                <label for="driving">Delivery Driving (must have valid license)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="education" name="interest" value="education">
+                                <label for="education">Community Education</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="admin" name="interest" value="admin">
+                                <label for="admin">Administrative Support</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="skills">Special Skills or Qualifications</label>
+                        <textarea id="skills" name="skills" placeholder="E.g., Food safety certification, commercial driver's license, multilingual, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Previous Volunteer Experience</label>
+                        <textarea id="experience" name="experience"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whyVolunteer">Why do you want to volunteer with us?</label>
+                        <textarea id="whyVolunteer" name="whyVolunteer"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Availability</h2>
+                    
+                    <div class="form-group">
+                        <label>How many hours per week are you available? <span class="required">*</span></label>
+                        <select id="hoursAvailable" name="hoursAvailable" required>
+                            <option value="">Select...</option>
+                            <option value="1-3">1-3 hours</option>
+                            <option value="4-6">4-6 hours</option>
+                            <option value="7-10">7-10 hours</option>
+                            <option value="10+">More than 10 hours</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Preferred Days and Times <span class="required">*</span></label>
+                        <p>Please indicate your general availability (check all that apply):</p>
+                        
+                        <table class="availability-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Morning (8am-12pm)</th>
+                                    <th>Afternoon (12pm-5pm)</th>
+                                    <th>Evening (5pm-9pm)</th>
+                                    <th>Weekend</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td><input type="checkbox" name="mondayMorning"></td>
+                                    <td><input type="checkbox" name="mondayAfternoon"></td>
+                                    <td><input type="checkbox" name="mondayEvening"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td><input type="checkbox" name="tuesdayMorning"></td>
+                                    <td><input type="checkbox" name="tuesdayAfternoon"></td>
+                                    <td><input type="checkbox" name="tuesdayEvening"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td><input type="checkbox" name="wednesdayMorning"></td>
+                                    <td><input type="checkbox" name="wednesdayAfternoon"></td>
+                                    <td><input type="checkbox" name="wednesdayEvening"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td><input type="checkbox" name="thursdayMorning"></td>
+                                    <td><input type="checkbox" name="thursdayAfternoon"></td>
+                                    <td><input type="checkbox" name="thursdayEvening"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td><input type="checkbox" name="fridayMorning"></td>
+                                    <td><input type="checkbox" name="fridayAfternoon"></td>
+                                    <td><input type="checkbox" name="fridayEvening"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><input type="checkbox" name="saturdayWeekend"></td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><input type="checkbox" name="sundayWeekend"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Additional Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Do you have any physical limitations we should be aware of?</label>
+                        <textarea id="limitations" name="limitations" placeholder="This helps us assign appropriate tasks"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="referral">How did you hear about our volunteer program?</label>
+                        <select id="referral" name="referral">
+                            <option value="">Select...</option>
+                            <option value="website">Our Website</option>
+                            <option value="social">Social Media</option>
+                            <option value="friend">Friend/Family</option>
+                            <option value="event">Community Event</option>
+                            <option value="school">School/University</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="volunteer-benefits">
+                    <h3>Volunteer Benefits</h3>
+                    <ul>
+                        <li>Make a direct impact on reducing food waste in your community</li>
+                        <li>Gain valuable experience in food recovery and distribution</li>
+                        <li>Meet like-minded people passionate about sustainability</li>
+                        <li>Receive training in food safety and handling</li>
+                        <li>Flexible scheduling to fit your availability</li>
+                    </ul>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Application</button>
+                
+                <div class="login-link">
+                    Already a volunteer? <a href="#">Log in to your account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Form validation
+            const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    field.style.borderColor = '#e53935';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields marked with *');
+                return;
+            }
+            
+            // Check if at least one interest is selected
+            const interests = document.querySelectorAll('input[name="interest"]:checked');
+            if (interests.length === 0) {
+                alert('Please select at least one area of interest');
+                return;
+            }
+            
+            // Check if at least one availability is selected
+            const availabilities = document.querySelectorAll('.availability-table input[type="checkbox"]:checked');
+            if (availabilities.length === 0) {
+                alert('Please select at least one time slot you are available');
+                return;
+            }
+            
+            // Form is valid - would typically send to server here
+            alert('Thank you for your volunteer application! We will review your information and contact you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

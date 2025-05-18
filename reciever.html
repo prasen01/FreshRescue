@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodSave - Register as Recipient</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #FF9800;
+            --light-bg: #f8f9fa;
+            --dark-text: #212121;
+            --light-text: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem 2rem;
+        }
+        
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: var(--light-bg);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .registration-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            background-color: #E65100;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .options-section {
+            margin-top: 4rem;
+        }
+        
+        .options-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .option-card {
+            flex: 1;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        .option-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-top: 0;
+        }
+        
+        .option-preview {
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .option-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .testimonials {
+            background-color: #E8F5E9;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .benefits-list {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .benefit-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+        }
+        
+        .benefit-item h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .options-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FoodSave</h1>
+        <p>Join the Movement to Reduce Food Waste</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Join Us</a></li>
+            <li><a href="#">Impact</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hero">
+        <h1>Register as a Recipient</h1>
+        <p>Join our network to access surplus food donations and help reduce food waste while supporting your community.</p>
+    </div>
+    
+    <div class="container">
+        <div class="registration-card">
+            <h2>Create Your Recipient Account</h2>
+            <p>Complete the form below to register as a food recipient organization. Once registered, you'll have access to available food donations.</p>
+            
+            <form>
+                <div class="form-group">
+                    <label for="organization">Organization Name</label>
+                    <input type="text" id="organization" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="type">Organization Type</label>
+                    <select id="type" required>
+                        <option value="">Select your organization type</option>
+                        <option value="food-bank">Food Bank</option>
+                        <option value="shelter">Shelter</option>
+                        <option value="community-kitchen">Community Kitchen</option>
+                        <option value="school">School Program</option>
+                        <option value="religious">Religious Organization</option>
+                        <option value="nonprofit">Nonprofit</option>
+                        <option value="community-center">Community Center</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-name">Contact Person Name</label>
+                    <input type="text" id="contact-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mission">Organization Mission</label>
+                    <textarea id="mission" rows="3" placeholder="Briefly describe your organization's mission and who you serve" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+        </div>
+        
+        <div class="options-section">
+            <h2 style="text-align: center; color: var(--secondary-color);">What You Can Do as a Recipient</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">After registration, you'll have access to these features to help you find and claim food donations.</p>
+            
+            <div class="options-container">
+                <div class="option-card">
+                    <div class="option-icon">🍽️</div>
+                    <h3>Browse Available Food</h3>
+                    <p>View all currently available food donations in your area. Filter by food type, distance, and availability window.</p>
+                    <div class="option-preview">
+                        <img src="/api/placeholder/400/250" alt="Available food listings interface">
+                    </div>
+                    <p>Find exactly what your organization needs with detailed listings and photos of available donations.</p>
+                    <a href="available food.html" class="btn">View Available Food</a>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-icon">📦</div>
+                    <h3>Food Details & Reservations</h3>
+                    <p>See detailed information about each food donation and reserve items for pickup at your convenience.</p>
+                    <div class="option-preview">
+                        <img src="/api/placeholder/400/250" alt="Food details interface">
+                    </div>
+                    <p>Access detailed nutritional information, allergen warnings, and pickup instructions for each donation.</p>
+                    <a href="extrafood.html" class="btn">Explore Food Details</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonials">
+            <h2>Recipient Success Stories</h2>
+            <p>Learn how other organizations have benefited from joining our food rescue network.</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Since joining FoodSave, we've been able to serve 40% more meals to those in need while reducing our food budget significantly. The platform is intuitive and the food quality is excellent."</p>
+                    <p class="testimonial-author">- Community Hope Shelter</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"The variety of food we receive through FoodSave has allowed us to provide more nutritious meals. The reservation system makes planning our weekly menu so much easier."</p>
+                    <p class="testimonial-author">- Neighborhood Kitchen</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"As a small community organization, we never had reliable access to fresh produce. Now we can offer healthy options to families every week thanks to local restaurant donations."</p>
+                    <p class="testimonial-author">- Families First Center</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 3rem;">Benefits of Joining as a Recipient</h3>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h3>Reduce Food Costs</h3>
+                    <p>Access quality surplus food at no cost, allowing you to allocate resources to other needs.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Reliable Supply</h3>
+                    <p>Connect with multiple food donors for a more consistent and diverse food supply.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Environmental Impact</h3>
+                    <p>Help reduce food waste and its associated environmental impact in your community.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Community Connection</h3>
+                    <p>Build relationships with local businesses and other community organizations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 FoodSave. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQ</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>Together, we can create a more sustainable food system.</p>
+    </footer>
+</body>
+</html>

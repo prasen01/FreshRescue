@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Food Reduction Movement</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2e8b57;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2e8b57;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .col {
+            flex: 1;
+        }
+        
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            margin-bottom: 10px;
+        }
+        
+        button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #3aa76d;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .login-link a {
+            color: #2e8b57;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .food-waste-facts {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        
+        .food-waste-facts h3 {
+            color: #2e8b57;
+            margin-top: 0;
+        }
+        
+        @media (max-width: 600px) {
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://via.placeholder.com/100x100?text=FoodSavior" alt="Food Reduction Logo" class="logo">
+            <h1>Join Our Food Reduction Community</h1>
+            <p>Help reduce food waste and make a difference in your community</p>
+        </div>
+        
+        <form id="registrationForm">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="password">Password <span class="required">*</span></label>
+                        <input type="password" id="password" name="password" required minlength="8">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address">
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="zipCode">ZIP Code</label>
+                        <input type="text" id="zipCode" name="zipCode">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="JP">Japan</option>
+                    <!-- Add more countries as needed -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>How would you like to contribute? <span class="required">*</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="donateFood" name="contribute" value="donateFood">
+                        <label for="donateFood">Donate surplus food</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="volunteer" name="contribute" value="volunteer">
+                        <label for="volunteer">Volunteer for food collection/distribution</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="educate" name="contribute" value="educate">
+                        <label for="educate">Help educate others about food waste</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="other" name="contribute" value="other">
+                        <label for="other">Other ways</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="hearAboutUs">How did you hear about us?</label>
+                <select id="hearAboutUs" name="hearAboutUs">
+                    <option value="">Select an option</option>
+                    <option value="social">Social Media</option>
+                    <option value="friend">Friend or Family</option>
+                    <option value="news">News Article</option>
+                    <option value="search">Search Engine</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="comments">Any additional comments or questions?</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit">Become a Member</button>
+            </div>
+            
+            <div class="login-link">
+                Already a member? <a href="#">Log

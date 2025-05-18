@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodSave - Register as Donator</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #FF9800;
+            --light-bg: #f8f9fa;
+            --dark-text: #212121;
+            --light-text: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem 2rem;
+        }
+        
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: var(--light-bg);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .registration-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            background-color: #E65100;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .features-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .donation-preview {
+            background-color: #E8F5E9;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .donation-preview h2 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .preview-img {
+            max-width: 500px;
+            border-radius: 8px;
+            margin: 1.5rem auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-card {
+                max-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FoodSave</h1>
+        <p>Join the Movement to Reduce Food Waste</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Join Us</a></li>
+            <li><a href="#">Impact</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hero">
+        <h1>Register as a Donator</h1>
+        <p>Join hands with businesses that care — reduce food waste and help nourish those in need. Select your role and start making an impact today.</p>
+    </div>
+    
+    <div class="container">
+        <div class="registration-card">
+            <h2>Create Your Donator Account</h2>
+            <p>Fill out the form below to register as a food donator. Once registered, you'll be able to post available food donations.</p>
+            
+            <form>
+                <div class="form-group">
+                    <label for="organization">Organization/Business Name</label>
+                    <input type="text" id="organization" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="type">Organization Type</label>
+                    <select id="type" required>
+                        <option value="">Select your organization type</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="grocery">Grocery Store</option>
+                        <option value="bakery">Bakery</option>
+                        <option value="cafe">Café</option>
+                        <option value="hotel">Hotel</option>
+                        <option value="catering">Catering Service</option>
+                        <option value="farm">Farm</option>
+                        <option value="food-producer">Food Producer</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-name">Contact Person Name</label>
+                    <input type="text" id="contact-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                
+                <a href="donate-food.html" class="btn btn-primary">Create Account & Start Donating</a>
+            </form>
+        </div>
+        
+        <div class="features-section">
+            <h2>What You Can Do as a Donator</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📷</div>
+                    <h3>Post Food Photos</h3>
+                    <p>Upload images of your surplus food to show recipients what's available for donation.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Add Descriptions</h3>
+                    <p>Provide details about quantity, expiration dates, allergens, and pickup information.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Get Notified</h3>
+                    <p>Receive notifications when a recipient organization claims your donation.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="donation-preview">
+            <h2>Preview: Food Donation Posting</h2>
+            <p>Once registered, you'll be able to post food donations on our platform with photos and detailed descriptions.</p>
+            <img src="/api/placeholder/500/300" alt="Food donation posting interface" class="preview-img">
+            <p>Help reduce food waste by connecting your surplus food with those who need it most.</p>
+            <a href="donate-food.html" class="btn">See the Donation Form</a>
+        </div>
+    </div>
+
+    
+
+
+    <div class="form-group">
+        <label for="photos">Upload Photos of Your Facility (Max 5)</label>
+        <input type="file" id="photos" multiple accept="image/*">
+      </div>
+
+
+
+
+    
+    <footer>
+        <p>© 2025 FoodSave. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQ</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>Together, we can create a more sustainable food system.</p>
+    </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const formData = new FormData();
+          
+          // Add form fields
+          formData.append('organizationName', document.getElementById('organization').value);
+          formData.append('organizationType', document.getElementById('type').value);
+          formData.append('contactName', document.getElementById('contact-name').value);
+          formData.append('email', document.getElementById('email').value);
+          formData.append('phone', document.getElementById('phone').value);
+          formData.append('address', document.getElementById('address').value);
+          formData.append('password', document.getElementById('password').value);
+          
+          // Add photos if any (you'll need to add file input to your HTML)
+          const photoInput = document.getElementById('photos');
+          if (photoInput.files.length > 0) {
+            for (let i = 0; i < photoInput.files.length; i++) {
+              formData.append('photos', photoInput.files[i]);
+            }
+          }
+          
+          try {
+            const response = await fetch('/api/donators', {
+              method: 'POST',
+              body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+              // Redirect to dashboard or confirmation page
+              window.location.href = 'donatefood.html';
+            } else {
+              alert(Registration failed: ${data.error});
+            }
+          } catch (error) {
+            alert('Registration failed. Please try again.');
+            console.error('Error:', error);
+          }
+        });
+      </script>
+</body>
+</html>

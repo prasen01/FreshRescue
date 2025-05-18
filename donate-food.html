@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodSave - Post Food Donation</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #FF9800;
+            --light-bg: #f8f9fa;
+            --dark-text: #212121;
+            --light-text: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem 2rem;
+        }
+        
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .page-title {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .donation-form-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .donation-form {
+            flex: 2;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+        
+        .preview-section {
+            flex: 1;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            padding: 2rem;
+            position: sticky;
+            top: 2rem;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        
+        .image-upload {
+            border: 2px dashed #ddd;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .image-upload:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(76, 175, 80, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            background-color: #E65100;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background-color: #757575;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #616161;
+        }
+        
+        .preview-title {
+            color: var(--secondary-color);
+            margin-top: 0;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .preview-details {
+            margin-top: 1rem;
+        }
+        
+        .preview-details h4 {
+            margin: 0.5rem 0;
+            color: var(--secondary-color);
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: #E8F5E9;
+            color: var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .tags-container {
+            margin-top: 0.5rem;
+        }
+        
+        .form-section-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+        
+        .time-selector {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .time-selector input {
+            flex: 1;
+        }
+        
+        .tips {
+            background-color: #E8F5E9;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+        
+        .tips h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .tips ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .tips li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .buttons-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .donation-form-container {
+                flex-direction: column;
+            }
+            
+            .preview-section {
+                position: static;
+                max-height: none;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-selector {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FoodSave</h1>
+        <p>Join the Movement to Reduce Food Waste</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Join Us</a></li>
+            <li><a href="#">Impact</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="page-title">
+            <h1>Post Food Donation</h1>
+            <p>List your surplus food for donation by providing details and photos. Recipients will be able to see your listing and coordinate pickup.</p>
+        </div>
+        
+        <div class="donation-form-container">
+            <div class="donation-form">
+                <h2>Food Donation Details</h2>
+                
+                <div class="form-section-title">Food Information</div>
+                
+                <div class="form-group">
+                    <label for="food-title">Food Title/Name</label>
+                    <input type="text" id="food-title" placeholder="E.g., Fresh Bakery Items, Produce Assortment">
+                </div>
+                
+                <div class="form-group">
+                    <label for="food-category">Food Category</label>
+                    <select id="food-category">
+                        <option value="">Select a category</option>
+                        <option value="baked-goods">Baked Goods</option>
+                        <option value="produce">Fresh Produce</option>
+                        <option value="dairy">Dairy Products</option>
+                        <option value="prepared-food">Prepared Food</option>
+                        <option value="canned-goods">Canned/Packaged Goods</option>
+                        <option value="meat">Meat/Protein</option>
+                        <option value="mixed">Mixed Items</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="food-description">Description</label>
+                    <textarea id="food-description" rows="4" placeholder="Describe the food items, quantity, quality, etc."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Estimated Quantity</label>
+                    <input type="text" id="quantity" placeholder="E.g., 5 lbs, 3 trays, 20 servings">
+                </div>
+                
+                <div class="form-group">
+                    <label for="expiration">Best By Date</label>
+                    <input type="date" id="expiration">
+                </div>
+                
+                <div class="form-group">
+                    <label>Allergen Information</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contains-dairy">
+                            <label for="contains-dairy">Contains Dairy</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contains-nuts">
+                            <label for="contains-nuts">Contains Nuts</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contains-gluten">
+                            <label for="contains-gluten">Contains Gluten</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contains-soy">
+                            <label for="contains-soy">Contains Soy</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contains-eggs">
+                            <label for="contains-eggs">Contains Eggs</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="contains-shellfish">
+                            <label for="contains-shellfish">Contains Shellfish</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section-title">Photo Upload</div>
+                
+                <div class="form-group">
+                    <label>Upload Food Photos</label>
+                    <div class="image-upload">
+                        <div class="upload-icon">📷</div>
+                        <p>Click to upload photos or drag and drop</p>
+                        <p class="small">Add up to 5 photos to show the food condition</p>
+                        <input type="file" id="food-photos" multiple style="display: none;">
+                        <button class="btn">Choose Photos</button>
+                    </div>
+                </div>
+                
+                <div class="form-section-title">Pickup Information</div>
+                
+                <div class="form-group">
+                    <label for="pickup-location">Pickup Location</label>
+                    <input type="text" id="pickup-location" placeholder="Address where food can be picked up">
+                </div>
+                
+                <div class="form-group">
+                    <label>Available for Pickup</label>
+                    <div class="time-selector">
+                        <input type="date" id="pickup-date">
+                        <input type="time" id="pickup-start-time">
+                        <span>to</span>
+                        <input type="time" id="pickup-end-time">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pickup-notes">Pickup Instructions</label>
+                    <textarea id="pickup-notes" rows="3" placeholder="Any special instructions for pickup"></textarea>
+                </div>
+                
+                <div class="tips">
+                    <h3>Tips for Effective Donation Posts</h3>
+                    <ul>
+                        <li>Include clear, well-lit photos of the food</li>
+                        <li>Be specific about quantity and condition</li>
+                        <li>Provide accurate information about allergens</li>
+                        <li>Give a reasonable pickup window</li>
+                        <li>Respond promptly when recipients contact you</li>
+                    </ul>
+                </div>
+                
+                <div class="buttons-group">
+                    <button class="btn btn-secondary">Save as Draft</button>
+                    <button class="btn btn-primary">Post Donation</button>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <h3 class="preview-title">Preview Your Donation</h3>
+                <img src="/api/placeholder/400/200" alt="Food donation preview" class="preview-image">
+                <h3 id="preview-title">Fresh Bakery Items</h3>
+                <div class="tags-container">
+                    <span class="tag">Baked Goods</span>
+                    <span class="tag">Contains Gluten</span>
+                </div>
+                <div class="preview-details">
+                    <h4>Description:</h4>
+                    <p id="preview-description">Assorted fresh bread, pastries, and muffins from today's baking. All items are freshly made this morning.</p>
+                    
+                    <h4>Quantity:</h4>
+                    <p id="preview-quantity">3 trays (approximately 30 items)</p>
+                    
+                    <h4>Best By:</h4>
+                    <p id="preview-expiration">April 19, 2025</p>
+                    
+                    <h4>Pickup Information:</h4>
+                    <p id="preview-pickup">123 Main Street, Kolkata</p>
+                    <p id="preview-time">Available today, 5:00 PM - 7:00 PM</p>
+                    <p id="preview-notes">Please use the back entrance and ask for the manager.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 FoodSave. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQ</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>Together, we can create a more sustainable food system.</p>
+    </footer>
+</body>
+</html>

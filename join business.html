@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join FoodSave - Business Registration</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #FF9800;
+            --light-bg: #f8f9fa;
+            --dark-text: #212121;
+            --light-text: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem 2rem;
+        }
+        
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: var(--light-bg);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .option-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .option-card h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        .option-card p {
+            margin-bottom: 2rem;
+        }
+        
+        .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #E65100;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .option-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FoodSave</h1>
+        <p>Reducing Food Waste, One Connection at a Time</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Join Us</a></li>
+            <li><a href="#">Impact</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hero">
+        <h1>Business Registration</h1>
+        <p>Join our network of businesses committed to reducing food waste and making a positive impact in our community. Choose how you'd like to participate below.</p>
+    </div>
+    
+    <div class="container">
+        <div class="options">
+            <div class="option-card">
+                <div class="icon">🍽️</div>
+                <h3>Join as a Donor</h3>
+                <p>Are you a restaurant, grocery store, hotel, or food producer with surplus food? Join as a donor to reduce waste and make a difference.</p>
+                <ul style="text-align: left;">
+                    <li>Easily log and schedule surplus food pickups</li>
+                    <li>Track your environmental impact</li>
+                    <li>Receive tax benefits for your donations</li>
+                    <li>Showcase your commitment to sustainability</li>
+                </ul>
+                <a href="donator.html" class="btn btn-primary">Register as Donor</a>
+            </div>
+            
+            <div class="option-card">
+                <div class="icon">🏠</div>
+                <h3>Join as a Recipient</h3>
+                <p>Are you a food bank, shelter, community kitchen, or nonprofit organization that serves those in need? Join as a recipient.</p>
+                <ul style="text-align: left;">
+                    <li>Access quality surplus food donations</li>
+                    <li>Manage pickup schedules through our platform</li>
+                    <li>Plan meals based on upcoming donations</li>
+                    <li>Connect with local businesses in your area</li>
+                </ul>
+                <a href="reciever.html" class="btn">Register as Recipient</a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <h2>Why Join Our Food Reduction Initiative?</h2>
+            <p>Every year, billions of pounds of food go to waste while millions go hungry. Our platform connects businesses with excess food to organizations that can put it to good use, creating a more sustainable and equitable food system.</p>
+            <a href="#" class="btn btn-primary">Learn More About Our Impact</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 FoodSave. All rights reserved.</p>
+        <p>Together, we can reduce food waste and fight hunger in our communities.</p>
+    </footer>
+</body>
+</html>
